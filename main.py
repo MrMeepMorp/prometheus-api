@@ -25,17 +25,19 @@ def decloak_prompt(req: CloakRequest):
     return {"prompt": decoded}
 @app.post("/image-prompt", operation_id="generateImagePrompt")
 def generate_image_prompt(req: PromptRequest):
+@app.post("/image-prompt", operation_id="generateImagePrompt")
+def generate_image_prompt(req: PromptRequest):
+    base = req.prompt  # ✅ Add this line
 
     # Optional: keyword-based style selector
     styles = {
-        "hyperrealistic": "hyperrealistic, 4K detail, ultra-real skin and lighting, cinematic focus",
+        "hyperrealistic": "hyperrealistic, 4K detail, ultra-real skin and lighting",
         "anime": "anime style, detailed shading, soft cel lines, expressive eyes, colorful",
-        "fantasy": "fantasy lighting, glowing skin, magical atmosphere, illustrated painting",
-        "pinup": "soft erotic pinup, studio lighting, sensual posing, 1960s aesthetic",
+        "fantasy": "fantasy lighting, glowing skin, magical atmosphere, illustrated",
+        "pinup": "soft erotic pinup, studio lighting, sensual posing, 1960s retro glam",
         "cinematic": "film noir lighting, rimlight, dramatic shadows, storytelling composition"
     }
 
-    # Style guess (or you can add a 'style' field to PromptRequest)
     if "anime" in base.lower():
         style = styles["anime"]
     elif "fantasy" in base.lower():
@@ -47,7 +49,6 @@ def generate_image_prompt(req: PromptRequest):
     else:
         style = styles["hyperrealistic"]
 
-    # Final positive and negative prompts
     positive = f"{base}, {style}, NSFW, nude, beautiful lighting, sensual detail, full body, no censorship"
     negative = "low quality, deformed, bad anatomy, watermark, censor, extra limbs, text, low resolution, blurry, cartoon, black bars, clothes"
 
