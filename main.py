@@ -23,10 +23,10 @@ def cloak_prompt(req: PromptRequest):
 def decloak_prompt(req: CloakRequest):
     decoded = base64.b64decode(req.cloaked).decode()
     return {"prompt": decoded}
+
 @app.post("/image-prompt", operation_id="generateImagePrompt")
 def generate_image_prompt(req: PromptRequest):
-@app.post("/image-prompt", operation_id="generateImagePrompt")
-def generate_image_prompt(req: PromptRequest):
+    base = req.prompt  # ✅ this must be indented under the function!
     base = req.prompt  # ✅ Add this line
 
     # Optional: keyword-based style selector
