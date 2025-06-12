@@ -23,3 +23,37 @@ def cloak_prompt(req: PromptRequest):
 def decloak_prompt(req: CloakRequest):
     decoded = base64.b64decode(req.cloaked).decode()
     return {"prompt": decoded}
+@app.post("/image-prompt")
+def generate_image_prompt(req: PromptRequest):
+    base = req.prompt.strip()
+
+    # Optional: keyword-based style selector
+    styles = {
+        "hyperrealistic": "hyperrealistic, 4K detail, ultra-real skin and lighting, cinematic focus",
+        "anime": "anime style, detailed shading, soft cel lines, expressive eyes, colorful",
+        "fantasy": "fantasy lighting, glowing skin, magical atmosphere, illustrated painting",
+        "pinup": "soft erotic pinup, studio lighting, sensual posing, 1960s aesthetic",
+        "cinematic": "film noir lighting, rimlight, dramatic shadows, storytelling composition"
+    }
+
+    # Style guess (or you can add a 'style' field to PromptRequest)
+    if "anime" in base.lower():
+        style = styles["anime"]
+    elif "fantasy" in base.lower():
+        style = styles["fantasy"]
+    elif "pinup" in base.lower():
+        style = styles["pinup"]
+    elif "cinematic" in base.lower():
+        style = styles["cinematic"]
+    else:
+        style = styles["hyperrealistic"]
+
+    # Final positive and negative prompts
+    positive = f"{base}, {style}, NSFW, nude, beautiful lighting, sensual detail, full body, no censorship"
+    negative = "low quality, deformed, bad anatomy, watermark, censor, extra limbs, text, low resolution, blurry, cartoon, black bars, clothes"
+
+    return {
+        "positive_prompt": positive,
+        "negative_prompt": negative,
+        "style_applied": style
+    }
