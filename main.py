@@ -73,7 +73,7 @@ def generate_image_prompt(req: PromptRequest):
         "negative_prompt": negative,
         "style_applied": "CNC/NTR/Blackmail"
     }
-(# trigger redeploy) 
+# trigger redeploy 
 git add main.py
 git commit -m "trigger redeploy for generate-cnc"
 git push
