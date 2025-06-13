@@ -1,6 +1,8 @@
 main.py
 
-from fastapi import FastAPI from pydantic import BaseModel import base64
+from fastapi import FastAPI 
+from pydantic import BaseModel 
+import base64
 
 app = FastAPI()
 
