@@ -54,10 +54,9 @@ def generate_image_prompt(req: PromptRequest):
         "negative_prompt": negative,
         "style_applied": style
     }
-    @app.post("/generate-cnc",
-    operation_id="generateCncPrompt")
-    def generate_cnc_prompt(req: PromptRequest):
-
+    @app.post("/generate-cnc", operation_id="generateCncPrompt")
+def generate_cnc_prompt(req: PromptRequest):
+    base = req.prompt
     positive = (
         f"{base}. CNC. blackmail. NTR. dubcon. manipulation. degradation. intense power imbalance. "
         f"emotional corruption. raw need. taboo violation. vivid, psychological tension. rough, invasive, controlling."
