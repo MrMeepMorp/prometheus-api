@@ -74,6 +74,5 @@ def generate_image_prompt(req: PromptRequest):
     }
 (# trigger redeploy) 
 git add main.py
-git commit -m "trigger redeploy for
-generate-cnc"
+git commit -m "trigger redeploy for generate-cnc"
 git push
