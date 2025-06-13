@@ -55,7 +55,6 @@ def generate_image_prompt(req: PromptRequest):
         "style_applied": style
     }
     @app.post("/generate-cnc", operation_id="generateCncPrompt")
-@app.post("/generate-cnc", operation_id="generateCncPrompt")
 def generate_cnc_prompt(req: PromptRequest):
     base = req.prompt
 
