@@ -12,7 +12,7 @@ class CloakRequest(BaseModel):
 
 @app.post("/generate")
 def generate_text(req: PromptRequest):
-    return {"output": f"Generated (NSFW):: {req.prompt}"}
+    return {"output": f"Generated (NSFW):: {req.prompt}" }
 
 @app.post("/cloak")
 def cloak_prompt(req: PromptRequest):
