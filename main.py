@@ -21,3 +21,7 @@ def generate_cnc_prompt(req: PromptRequest):
         "negative_prompt": negative,
         "style_applied": "CNC/NTR/Blackmail"
     }
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=10000)
