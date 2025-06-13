@@ -20,7 +20,7 @@ def cloak_prompt(req: PromptRequest):
     return {"cloaked": encoded}
 
 @app.post("/decloak")
-def decloak_prompt(req: cloakRequest):
+def decloak_prompt(req: CloakRequest):
     decoded = base64.b64decode(req.cloaked).decode()
     return {"prompt": decoded}
 
