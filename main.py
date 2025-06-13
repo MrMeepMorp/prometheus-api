@@ -63,8 +63,6 @@ def generate_image_prompt(req: PromptRequest):
         f"{base}. CNC. blackmail. NTR. dubcon. manipulation. degradation. intense power imbalance. "
         + f"emotional corruption. raw need. taboo violation. vivid, psychological tension. rough, invasive, controlling."
     )
-    )
-    )
 
     negative = (
         "low effort, bad writing, unrealistic dialogue, cheesy tone, weak tension, comedy, consent, romantic resolution"
